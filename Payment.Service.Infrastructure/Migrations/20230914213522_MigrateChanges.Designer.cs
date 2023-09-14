@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Payment.Service.Infrastructure.EF.Contexts;
 
@@ -10,9 +11,11 @@ using Payment.Service.Infrastructure.EF.Contexts;
 namespace Payment.Service.Infrastructure.Migrations
 {
     [DbContext(typeof(ReadDBContext))]
-    partial class ReadDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230914213522_MigrateChanges")]
+    partial class MigrateChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");

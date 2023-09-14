@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Payment.Service.Application.DTOs;
 using Payment.Service.Application.UseCases.Category.Query.GetCategoriesList;
-using Payment.Service.Domain.Model.Client;
 using Payment.Service.Infrastructure.EF.Contexts;
 using Payment.Service.Infrastructure.EF.ReadModel;
 using System;
@@ -17,9 +16,9 @@ namespace Payment.Service.Infrastructure.UseCases.Category.Query
     {
         private readonly DbSet<CategoryReadModel> _category;
 
-        public GetCategoryListHandler(ReadDBContext client)
+        public GetCategoryListHandler(ReadDBContext category)
         {
-            _category = client.Category;
+            _category = category.Category;
         }
         public async Task<ICollection<CategoryDto>> Handle(GetCategoriesListQuery request, CancellationToken cancellationToken)
         {

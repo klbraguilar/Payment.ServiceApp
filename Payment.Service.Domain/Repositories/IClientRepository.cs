@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Payment.Service.Domain.Repositories
 {
-    public interface IClientRepository : IRepository<Client, Guid>
+    public interface IClientRepository : IRepositoryEntity<Client, Guid>
     {
         Task UpdateAsync(Client client);
     }
