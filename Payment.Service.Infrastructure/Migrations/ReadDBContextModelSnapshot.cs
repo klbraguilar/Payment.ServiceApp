@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Payment.Service.Infrastructure.EF.Config;
+using Payment.Service.Infrastructure.EF.Contexts;
 
 #nullable disable
 

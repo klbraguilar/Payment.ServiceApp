@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Payment.Service.Application.UseCases.Client.CreateClient
+namespace Payment.Service.Application.UseCases.Client.Command.CreateClient
 {
     public class CreateClientHandler : IRequestHandler<CreateClientCommand, Guid>
     {

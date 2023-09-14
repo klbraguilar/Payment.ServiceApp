@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Payment.Service.Application;
-using Payment.Service.Infrastructure.EF.Config;
+using Payment.Service.Domain.Repositories;
+using Payment.Service.Infrastructure.EF.Contexts;
+using Payment.Service.Infrastructure.EF.Repositories;
 using Restaurant.SharedKernel.Core;
 using System;
 using System.Collections.Generic;
@@ -27,13 +29,13 @@ namespace Payment.Service.Infrastructure
                     configuration.GetConnectionString("PaymentServiceConnection");
             services.AddDbContext<ReadDBContext>(context =>
                     context.UseSqlite(connectionString));
-            /*services.AddDbContext<WriteDBContext>(context =>
-                context.UseSqlite(connectionString));*/
+            services.AddDbContext<WriteDBContext>(context =>
+                context.UseSqlite(connectionString));
 
-            /*services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            services.AddScoped<IHuespedRepository, HuespedRepository>();
-            services.AddScoped<IStaffRepository, StaffRepository>();*/
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IBillRepository, BillRepository>();
 
             using var scope = services.BuildServiceProvider().CreateScope();
             if (!isDevelopment)

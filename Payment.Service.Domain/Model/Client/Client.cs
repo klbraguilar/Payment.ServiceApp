@@ -23,6 +23,6 @@ namespace Payment.Service.Domain.Model.Client
             Name = name;
         }
 
-        public Client() { }
+        private Client() { }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Payment.Service.Application.UseCases.Client.CreateClient;
+using Payment.Service.Application.UseCases.Client.Command.CreateClient;
 
 namespace Payment.Service.WebAPI
 {

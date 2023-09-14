@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Payment.Service.Infrastructure.EF.Config
+namespace Payment.Service.Infrastructure.EF.Contexts
 {
     public class ReadDBContext : DbContext
     {

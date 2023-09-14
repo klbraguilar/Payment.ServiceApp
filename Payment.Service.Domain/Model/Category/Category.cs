@@ -18,7 +18,7 @@ namespace Payment.Service.Domain.Model.Category
             Name = name;
         }
 
-        public Category()
+        private Category()
         {
 
         }

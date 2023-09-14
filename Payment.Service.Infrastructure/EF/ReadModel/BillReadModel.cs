@@ -33,7 +33,7 @@ namespace Payment.Service.Infrastructure.EF.ReadModel
         [Required]
         public string State { get; set; }
 
-        [Column("costo", TypeName = "decimal(18,2)")]
+        [Column("amount", TypeName = "decimal(18,2)")]
         [Required]
         public decimal Amount { get; set; }
     }
