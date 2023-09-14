@@ -7,6 +7,7 @@ using Restaurant.SharedKernel.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,13 +21,13 @@ namespace Payment.Service.Infrastructure.EF.Contexts
 
         public WriteDBContext(DbContextOptions<WriteDBContext> options) : base(options)
         {
-
+            Database.EnsureCreated();
+            Seed();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             var clientConfig = new ClientConfig();
             modelBuilder.ApplyConfiguration<Client>(clientConfig);
 
@@ -37,10 +38,21 @@ namespace Payment.Service.Infrastructure.EF.Contexts
             modelBuilder.ApplyConfiguration<Bill>(billConfig);
 
             modelBuilder.Ignore<DomainEvent>();
-            //Client client = new Client(1, "Client1");
+            //Client client = new Client("Client1");
 
 
             //modelBuilder.Entity<Client>().HasData(client);
+        }
+
+        public void Seed()
+        {
+            Client client1 = new Client("Joseph Carlton");
+            Client client2 = new Client("Maria Juarez");
+            Client client3 = new Client("Albert Kenny");
+            Client client4 = new Client("Jessica Phillips");
+            Client client5 = new Client("Charles Johnson");
+            this.AddRange(client1, client2, client3, client4,client5);
+            //this.SaveChanges();
         }
     }
 }

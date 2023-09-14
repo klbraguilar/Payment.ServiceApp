@@ -23,12 +23,12 @@ namespace Payment.Service.Infrastructure.EF.Repositories
             await _dbContext.Bill.AddAsync(bill);
         }
 
-        public Task<Bill?> FindByIdAsync(Guid id)
+        public async Task<Bill?> FindByIdAsync(Guid id)
         {
-            return _dbContext.Bill.FindAsync(id);
+            return await _dbContext.Bill.FindAsync(id);
         }
 
-        public async Task UpdateAsync(Bill bill)
+        public Task UpdateAsync(Bill bill)
         {
             
             throw new NotImplementedException();

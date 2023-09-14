@@ -9,6 +9,8 @@ using Restaurant.SharedKernel.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +21,7 @@ namespace Payment.Service.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration, bool isDevelopment)
         {
             services.AddApplication();
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             AddDatabase(services, configuration, isDevelopment);
             return services;
         }
@@ -31,13 +34,14 @@ namespace Payment.Service.Infrastructure
                     context.UseSqlite(connectionString));
             services.AddDbContext<WriteDBContext>(context =>
                 context.UseSqlite(connectionString));
-
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IBillRepository, BillRepository>();
-
+            
             using var scope = services.BuildServiceProvider().CreateScope();
+            var writeDbContext = scope.ServiceProvider.GetRequiredService<WriteDBContext>();
+            //writeDbContext.Seed();
             if (!isDevelopment)
             {
                 var context = scope.ServiceProvider.GetRequiredService<ReadDBContext>();

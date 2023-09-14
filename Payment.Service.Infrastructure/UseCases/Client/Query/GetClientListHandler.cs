@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Payment.Service.Application.DTOs;
 using Payment.Service.Application.UseCases.Client.Query.GetClientsList;
+using Payment.Service.Infrastructure.EF.Contexts;
 using Payment.Service.Infrastructure.EF.ReadModel;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,9 @@ namespace Payment.Service.Infrastructure.UseCases.Client.Query
     {
         private readonly DbSet<ClientReadModel> _client;
 
-        public GetClientListHandler(DbSet<ClientReadModel> client)
+        public GetClientListHandler(ReadDBContext client)
         {
-            _client = client;
+            _client = client.Client;
         }
 
         public async Task<ICollection<ClientDto>> Handle(GetClientsListQuery request, CancellationToken cancellationToken)
@@ -26,7 +27,7 @@ namespace Payment.Service.Infrastructure.UseCases.Client.Query
             var query = _client.AsNoTracking();
 
             if (!string.IsNullOrWhiteSpace(request.SearchTerm))
-            {
+                {
                 query = query.Where(x => x.Name.Contains(request.SearchTerm));
             }
 

@@ -14,8 +14,4 @@
     <ProjectReference Include="..\Payment.Service.Domain\Payment.Service.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Bill\Command\CreateBill\" />
-  </ItemGroup>
-
 </Project>

@@ -19,7 +19,7 @@ namespace Payment.Service.Infrastructure.EF.Config
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .HasColumnName("catId");
+                .HasColumnName("categoryId");
 
             var nameConverter = new ValueConverter<NameValue, string>(
                 nameValue => nameValue.Value,

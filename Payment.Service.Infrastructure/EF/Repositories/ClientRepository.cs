@@ -29,6 +29,11 @@ namespace Payment.Service.Infrastructure.EF.Repositories
             return await _writeDbContext.Client.FindAsync(id);
         }
 
+        public async Task<Client?> FindAllClients()
+        {
+            return await _writeDbContext.Client.FindAsync();
+        }
+
         public Task UpdateAsync(Client client)
         {
             _writeDbContext.Client.Update(client);
