@@ -38,10 +38,7 @@ namespace Payment.Service.Infrastructure.EF.Contexts
             modelBuilder.ApplyConfiguration<Bill>(billConfig);
 
             modelBuilder.Ignore<DomainEvent>();
-            //Client client = new Client("Client1");
-
-
-            //modelBuilder.Entity<Client>().HasData(client);
+            
         }
 
         public void Seed()

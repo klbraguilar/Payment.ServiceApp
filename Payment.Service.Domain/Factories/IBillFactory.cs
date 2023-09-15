@@ -10,5 +10,6 @@ namespace Payment.Service.Domain.Factories
     public interface IBillFactory
     {
         Bill Create(Guid clientId, Guid categoryID,string period, decimal amount);
+        Bill ConfirmPay(Bill billToConfirm);
     }
 }

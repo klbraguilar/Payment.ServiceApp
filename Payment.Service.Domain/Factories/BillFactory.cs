@@ -9,6 +9,11 @@ namespace Payment.Service.Domain.Factories
 {
     public class BillFactory : IBillFactory
     {
+        public Bill ConfirmPay(Bill billToConfirm)
+        {
+            throw new NotImplementedException();
+        }
+
         public Bill Create(Guid clientId, Guid categoryId,string period, decimal amount)
         {
             return new Bill(clientId, categoryId, period, amount);

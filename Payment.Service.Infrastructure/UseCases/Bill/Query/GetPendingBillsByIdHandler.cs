@@ -26,7 +26,7 @@ namespace Payment.Service.Infrastructure.UseCases.Bill.Query
             var query = _bill.AsNoTracking();
             if (!String.IsNullOrEmpty(request.SearchTerm.ToString()))
             {
-                query = query.Where(x => x.ClientId == request.SearchTerm);
+                query = query.Where(x => x.ClientId == request.SearchTerm && x.State == "Pending");
             }
 
             return await query.Select(bill =>

@@ -11,8 +11,8 @@ namespace Payment.Service.Application.DTOs
         public Guid Id { get; set; }
         public Guid ClientId { get; set; }
         public Guid CategoryID { get; set; }
-        public string Period { get; set; }
-        public string State { get; set; }
+        public string? Period { get; set; }
+        public string? State { get; set; }
         public decimal Amount { get; set; }
 
     }

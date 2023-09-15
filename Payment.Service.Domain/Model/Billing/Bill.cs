@@ -29,6 +29,15 @@ namespace Payment.Service.Domain.Model.Billing
             Amount = amount;
         }
 
+        public Bill ConfirmPay(Bill billToConfirm)
+        {
+            if(billToConfirm.State.ToString() == "Pending")
+            {
+                billToConfirm.State = BillState.Paid;
+            }
+            return billToConfirm;
+        }
+
         public void Confirmar()
         {
             if (State != BillState.Pending)
