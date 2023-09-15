@@ -28,8 +28,8 @@ namespace Payment.Service.Infrastructure.UseCases.Bill.Handler
 
         public async Task<Guid> Handle(PayBillCommand request, CancellationToken cancellationToken)
         {
-            Guid newGuid = Guid.Parse(request.searchterm);
-            var getPendingBill = _billRepository.FindByIdAsync(newGuid);
+            
+            var getPendingBill = _billRepository.FindByIdAsync(request.searchterm);
             if (getPendingBill == null)
             {
                 throw new ConfirmationBillException("Pending bill: " + request.searchterm + "doesn't exist.");
