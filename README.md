@@ -13,6 +13,7 @@ You can clone the repo by using:
 ```
 git clone https://github.com/klbraguilar/Payment.ServiceApp.git
 ```
+**or Downloading the zip file**
 then, move to the folder where you have the project:
 ```
 cd your_local_path/Payment.ServiceApp/Payment.Service.WebAPI/
